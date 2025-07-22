@@ -1,0 +1,86 @@
+#!/bin/sh
+set -e
+
+. /usr/share/debconf/confmodule
+
+password_hash_path="/etc/perfectcrypt/password_hash"
+
+get_kill_password() {
+    db_get perfectcrypt/password || true
+    local KILL_PASS="$RET"
+    db_get perfectcrypt/password-again || true
+    local KILL_PASS_CONFIRMATION="$RET"
+
+    if [ "$KILL_PASS" != "$KILL_PASS_CONFIRMATION" ]; then
+	return
+    fi
+
+    echo -n "$KILL_PASS"
+}
+
+log() {
+    if [ -n "$DEBCONF_RECONFIGURE" ]; then
+	echo "$1"
+    fi
+}
+
+store_password_hash() {
+    local password=$(get_kill_password)
+
+    if [ -z "$password" ]; then
+	if [ -e "$password_hash_path" ]; then
+	    log "INFO: Keeping current kill password."
+	else
+	    log "INFO: No kill password found in debconf's database, nothing to configure."
+	    log "INFO: Try 'dpkg-reconfigure perfectcrypt' to set a kill password."
+	fi
+	return
+    fi
+
+    echo "INFO: Storing the kill password's crypted hash in $password_hash_path"
+    mkdir -p $(dirname $password_hash_path)
+    :> $password_hash_path
+    chmod 600 $password_hash_path
+    echo "$password" | /usr/lib/perfectcrypt/crypt --generate >$password_hash_path
+
+    # Drop the password from the debconf database for extra safety
+    db_reset perfectcrypt/password || true
+    db_reset perfectcrypt/password-again || true
+}
+
+configure_kill_password() {
+    db_get perfectcrypt/already-configured || true
+    what="$RET"
+
+    case "$what" in
+	keep)
+	    # Nothing to do, move on
+	    if [ -e "$password_hash_path" ]; then
+		log "INFO: Keeping current kill password."
+	    fi
+	    ;;
+	remove)
+	    if [ -e "$password_hash_path" ]; then
+		echo "INFO: Removing current kill password."
+		rm -f "$password_hash_path"
+	    fi
+	    ;;
+	overwrite)
+	    store_password_hash
+	    ;;
+	*)
+	    echo "WARNING: unexpected value in debconf's perfectcrypt/already-configured: '$what'" >&2
+	    ;;
+    esac
+
+    # Reset to default value for next time we reconfigure
+    db_reset perfectcrypt/already-configured || true
+}
+
+case "$1" in
+    configure)
+	configure_kill_password
+	;;
+esac
+
+

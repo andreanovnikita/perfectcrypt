@@ -1,0 +1,32 @@
+Template: perfectcrypt/password
+Type: password
+Description: Kill password:
+ By setting up a kill password, you gain the ability to render your encrypted data permanently inaccessible in emergency situations.
+ .
+ During the early boot phase, when prompted for your LUKS encryption passphrase, you can enter the kill password instead.
+ .
+ WARNING! You MUST make a backup copy of the header of the volume you are protecting! WARNING!
+ .
+ For more details read EMERGENCY.md and README.md
+ .
+ Rather than decrypting the partitions, the system will immediately erase the keyslots from the LUKS volume, making the data irrecoverable.
+ .
+ To cancel the operation or disable an existing kill password, simply enter an empty password when prompted.
+
+Template: perfectcrypt/password-again
+Type: password
+Description: Re-enter password to verify:
+ Please enter the same kill password again to verify that you have typed it
+ correctly.
+
+Template: perfectcrypt/password-mismatch
+Type: error
+Description: Password input error
+ The two passwords you entered were not the same. Please try again.
+
+Template: perfectcrypt/already-configured
+Type: select
+Default: overwrite
+Choices-C: keep, overwrite, remove
+Choices: Keep the current password, Overwrite the current password, Remove the current password
+Description: A kill password is already configured, what should be done?

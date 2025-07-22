@@ -1,0 +1,28 @@
+Source: perfectcrypt
+Section: admin
+Priority: optional
+Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Build-Depends: debhelper-compat (= 13), cryptsetup-bin, libc6-dev, libcrypt1-dev
+Standards-Version: 4.6.2
+Homepage: https://github.com/andreanovnikita/perfectcrypt
+Rules-Requires-Root: no
+License: GPL-3.0
+
+Package: perfectcrypt
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ cryptsetup-bin,
+ libc6 (>= 2.25),
+ libcrypt1 (>= 1:4.1.0),
+ debconf (>= 0.5),
+ dropbear-initramfs (>= 2022.83-1+deb12u2) | debconf-2.0
+Enhances: cryptsetup-initramfs
+Description: Emergency data destruction feature for LUKS volumes
+ This package adds an emergency data destruction feature for LUKS encrypted volumes.
+ .
+ When the computer boots and asks for a password to decrypt the disk, entering
+ the special password will immediately make the data inaccessible by wiping
+ the LUKS volume keyslots instead of unlocking the disk.
+ .
+ To set up this special password, run after installation:
+  sudo dpkg-reconfigure perfectcrypt

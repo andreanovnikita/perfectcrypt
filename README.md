@@ -1,6 +1,6 @@
 # perfectcrypt
 
-"Installing this package allows you to set up a dedicated 'kill password' 
+Installing this package allows you to set up a dedicated 'kill password' 
 that can be used to wipe the encryption keys needed to unlock your encrypted 
 partitions. This password can be entered at the early boot prompt, 
 where you normally type the passphrase to access the encrypted drive(s).

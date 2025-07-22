@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Sun, 20 Jul 2025 10:27:07 +0700
+Source: perfectcrypt
+Architecture: source
+Version: 1.1
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Changed-By: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Changes:
+ perfectcrypt (1.1) UNRELEASED; urgency=medium
+ .
+   * Any fixes.
+Checksums-Sha1:
+ a06faaec8ad3cce62fc600b3c9cd473e9c80bfd0 653 perfectcrypt_1.1.dsc
+ b598fd683563e7dd0f0b0c598db001d12bbea1d1 15489 perfectcrypt_1.1.tar.gz
+ af5dc9d9ea5276161c142b37c511452f7c67f295 5233 perfectcrypt_1.1_source.buildinfo
+Checksums-Sha256:
+ d66dd1f2c4178383eda7a0da51f1b6f64c920ff2bd19e3b298685fda5e688e38 653 perfectcrypt_1.1.dsc
+ b23609b4bc0e1cbf6f891025d6924cb570102ccad7a7f153133437d34231f8ea 15489 perfectcrypt_1.1.tar.gz
+ f5984575393e65e74890c954fe87e1089f31a7e68ea553e5f5605cb3e59b11da 5233 perfectcrypt_1.1_source.buildinfo
+Files:
+ bc97644592b6aea9cc7736ddcd2765c2 653 admin optional perfectcrypt_1.1.dsc
+ 96832508728de8bfca725dd57c372623 15489 admin optional perfectcrypt_1.1.tar.gz
+ 1af57f06253bcb783991ae9a55844a4c 5233 admin optional perfectcrypt_1.1_source.buildinfo

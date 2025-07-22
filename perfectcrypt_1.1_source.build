@@ -1,0 +1,39 @@
+ dpkg-buildpackage -us -uc -ui -S -sa
+dpkg-buildpackage: инфо: пакет исходного кода perfectcrypt
+dpkg-buildpackage: инфо: версия исходного кода 1.1
+dpkg-buildpackage: инфо: дистрибутив исходного кода UNRELEASED
+dpkg-buildpackage: инфо: исходный код изменён Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+ dpkg-source --before-build .
+dpkg-source: предупреждение: неизвестное информационное поле «License» во входных данных в общая секция управляющего информационного файла
+ debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: предупреждение: не задан формат исходников в debian/source/format, см. dpkg-source(1)
+dpkg-source: предупреждение: неизвестное информационное поле «License» во входных данных в общая секция управляющего информационного файла
+dpkg-source: инфо: используется формат исходника «1.0»
+dpkg-source: инфо: сборка perfectcrypt в perfectcrypt_1.1.tar.gz
+dpkg-source: инфо: сборка perfectcrypt в perfectcrypt_1.1.dsc
+ dpkg-genbuildinfo --build=source -O../perfectcrypt_1.1_source.buildinfo
+ dpkg-genchanges -sa --build=source -O../perfectcrypt_1.1_source.changes
+dpkg-genchanges: предупреждение: неизвестное информационное поле «License» во входных данных в общая секция управляющего информационного файла
+dpkg-genchanges: инфо: в закачку включён весь исходный код
+ dpkg-source --after-build .
+dpkg-source: предупреждение: неизвестное информационное поле «License» во входных данных в общая секция управляющего информационного файла
+dpkg-buildpackage: инфо: закачка только пакетов исходного кода: родной пакет Debian
+Now running lintian perfectcrypt_1.1_source.changes ...
+running with root privileges is not recommended!
+E: perfectcrypt source: build-depends-on-build-essential-package-without-using-version libc6-dev [Build-Depends: libc6-dev]
+E: perfectcrypt source: not-using-po-debconf
+E: perfectcrypt source: source-is-missing [usr/lib/perfectcrypt/crypt]
+E: perfectcrypt source: untranslatable-debconf-templates [debian/templates:18]
+E: perfectcrypt source: untranslatable-debconf-templates [debian/templates:24]
+E: perfectcrypt source: untranslatable-debconf-templates [debian/templates:32]
+E: perfectcrypt source: untranslatable-debconf-templates [debian/templates:3]
+W: perfectcrypt source: maintainer-script-lacks-debhelper-token [debian/postinst]
+W: perfectcrypt source: maintainer-script-lacks-debhelper-token [debian/postrm]
+W: perfectcrypt source: maintainer-script-lacks-debhelper-token [debian/preinst]
+W: perfectcrypt source: missing-debian-source-format
+W: perfectcrypt source: package-depends-on-hardcoded-libc (in section for perfectcrypt) Depends ${shlibs:Depends}, ${misc:Depends}, cryptsetup-bin, libc6 (>= 2.25), libcrypt1 (>= 1:4.1.0), debconf (>= 0.5), dropbear-initramfs (>= 2022.83-1+deb12u2) | debconf-2.0 [debian/control:13]
+W: perfectcrypt source: package-file-is-executable [debian/control]
+Finished running lintian.

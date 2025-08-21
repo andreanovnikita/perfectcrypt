@@ -7,7 +7,7 @@ where you normally type the passphrase to access the encrypted drive(s).
 
 ## How I can add the kill password
 
-After having installed the package, just run “dpkg-reconfigure
+After having installed the package, run “dpkg-reconfigure
 perfectcrypt”. Behind the scene, this creates
 `/etc/perfectcrypt/password_hash` with
 the output of `echo your-password |
@@ -17,7 +17,7 @@ the initramfs (`update-initramfs -u`).
 After installing the package, simply run dpkg-reconfigure perfectcrypt. 
 This will automatically:
 Generate /etc/perfectcrypt/password_hash using echo your-password | /usr/lib/perfectcrypt/crypt --generate
-Update the initramfs by running update-initramfs -u in the background."
+Update the initramfs by running update-initramfs -u in the background.
 
 ## How does it work?
 
@@ -30,21 +30,18 @@ variables set by /usr/share/initramfs-tools/scripts/local-top/cryptroot.
 
 For flush the encryption keys, we execute cryptsetup erase <device>.
 
-In file /etc/perfectcrypt/settings.cfg, you can edit:
+In file /etc/perfectcrypt/settings.cfg, you can edit variables:
 1. failsleep - how many seconds will cryptsetup sleep after 
 entering password 3 times incorrectly
 2. reaction_erase - how will cryptsetup behave if the system 
 volume encryption keys are cleared
-
-## How to add the kill password non-interactively
-
-```
-$ sudo debconf-set-selections <<END
-perfectcrypt perfectcrypt/password string Th3Pa$$w0rd
-perfectcrypt perfectcrypt/password-again string Th3Pa$$w0rd
-END
-$ sudo dpkg-reconfigure -f noninteractive perfectcrypt
-```
+3. show_author - will information about the developer and system
+name be displayed at the password request stage
+4. erase_killed_disks - Will automatic disk cleanup be started
+after key slots are cleared
+5. erase_disk_1, erase_disk_2, erase_disk_3, erase_disk_4 - Specify
+the uuids of the disks whose key slots will also be cleared (if necessary).
+By default - none.
 
 ## Backup encrypt skeys
 

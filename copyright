@@ -6,12 +6,6 @@ Files: *
 Copyright: 2024 Andreyanov Nikita <andreanov.nickita@yandex.ru>
 License: GPL-3.0+
 
-Files: debian/*
-Copyright: 2019 Offensive Security
-           2022 Jonas Meurer <jonas@freesources.org>
-           2024 Andreyanov Nikita <andreanov.nickita@yandex.ru>
-License: GPL-3.0+
-
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

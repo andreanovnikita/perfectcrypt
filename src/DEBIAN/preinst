@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "install" ]; then
+    dpkg-divert --rename --package perfectcrypt \
+		--divert /lib/cryptsetup/askpass.cryptsetup \
+		--add /lib/cryptsetup/askpass
+    dpkg-divert --rename --package perfectcrypt \
+                --divert /usr/share/initramfs-tools/scripts/local-top/cryptroot.old \
+                --add /usr/share/initramfs-tools/scripts/local-top/cryptroot
+fi
+
+

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "remove" ]; then
+    dpkg-divert --rename --package perfectcrypt \
+                        --divert /lib/cryptsetup/askpass.cryptsetup \
+                        --remove /lib/cryptsetup/askpass
+    dpkg-divert --rename --package perfectcrypt \
+	                --divert /usr/share/initramfs-tools/scripts/local-top/cryptroot.old \
+        	        --remove /usr/share/initramfs-tools/scripts/local-top/cryptroot
+elif [ "$1" = "purge" ]; then
+    rm -rf /etc/perfectcrypt
+fi
+
+# Automatically added by dh_installdebconf/13.8
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+	db_purge
+fi
+# End automatically added section
+

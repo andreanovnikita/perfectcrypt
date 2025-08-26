@@ -43,7 +43,7 @@ after key slots are cleared
 the uuids of the disks whose key slots will also be cleared (if necessary).
 By default - none.
 
-## Backup encrypt skeys
+## Backup LUKS header
 
 WARNING!
 If you do not back up the LUKS header, you may permanently lose access to all encrypted data in the event of any failure or accidental damage.

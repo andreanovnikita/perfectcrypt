@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sun, 16 Jan 2026 10:00:00 +0700
+Source: perfectcrypt
+Binary: perfectcrypt
+Architecture: source amd64
+Version: 2.1.0
+Distribution: stable
+Urgency: medium
+Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Changed-By: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Description:
+ perfectcrypt - Emergency data destruction feature for LUKS volumes
+Changes:
+ perfectcrypt (2.1.0) stable; urgency=medium
+ .
+   * Any fixes (mostly!)
+Checksums-Sha1:
+ 24fe0d1b257d96a53944e2a6edb73666ae86e0de 648 perfectcrypt_2.1.0.dsc
+ 57a0a050c9b83e6946e5a7f2f5bb0e11b5433fb3 15172 perfectcrypt_2.1.0.tar.gz
+ 99eeb38de2e87bdfdcb208debb669853ed917373 5180 perfectcrypt_2.1.0_amd64.buildinfo
+ bb0546c8cc61086653612285f0e1cc1492b07ebe 3272 perfectcrypt_2.1.0_amd64.deb
+Checksums-Sha256:
+ 62eac5b2519707e2ceb71dac2a2902d9ddb34ba1266ce93793641e6a8102486c 648 perfectcrypt_2.1.0.dsc
+ e5dc681904a873139633bd9b271a71777748967d4e7169f99b24cf8404da7141 15172 perfectcrypt_2.1.0.tar.gz
+ 0f3a8589f6f0a27d434b41fde6ff694cee0af8834da80f26d56058c2fceb8e75 5180 perfectcrypt_2.1.0_amd64.buildinfo
+ 6c59de8fde245362af3f9500157b3409439333c43b22d3bcc5093cf903081780 3272 perfectcrypt_2.1.0_amd64.deb
+Files:
+ 4a683bdcaa0b8718aecddca0fb9384e5 648 admin optional perfectcrypt_2.1.0.dsc
+ a44d4796c44531edd0934d8564dffeb3 15172 admin optional perfectcrypt_2.1.0.tar.gz
+ 79a9e74583b97b52171fedca857bcb12 5180 admin optional perfectcrypt_2.1.0_amd64.buildinfo
+ fb297b0a3bad814c819696b490260bdb 3272 admin optional perfectcrypt_2.1.0_amd64.deb

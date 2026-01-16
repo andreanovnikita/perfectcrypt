@@ -1,21 +1,14 @@
-Source: perfectcrypt
-Section: admin
-Priority: optional
-Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
-Build-Depends: debhelper-compat (= 13), cryptsetup-bin, libc6-dev, libcrypt1-dev
-Standards-Version: 4.6.2
-Homepage: https://www.perfectcrypt.ru/github
-Rules-Requires-Root: no
-
 Package: perfectcrypt
-Architecture: amd64
 Version: 2.1.0
-Depends: cryptsetup-bin,
-         libc6 (>= 2.25),
-         libcrypt1 (>= 1:4.1.0),
-         debconf (>= 0.5) | debconf-2.0
+Architecture: amd64
+Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Installed-Size: 16
+Depends: cryptsetup-bin, libc6 (>= 2.25), libcrypt1 (>= 1:4.1.0), debconf (>= 0.5) | debconf-2.0
 Enhances: cryptsetup-initramfs
 Conflicts: cryptsetup-nuke-password
+Section: admin
+Priority: optional
+Homepage: https://www.perfectcrypt.ru/github
 Description: Emergency data destruction feature for LUKS volumes
  This package adds an emergency data destruction feature for LUKS encrypted volumes.
  .

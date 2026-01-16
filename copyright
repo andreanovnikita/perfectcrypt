@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: perfectcrypt
-Source: https://t.me/aes_192
+Source: https://www.perfectcrypt.ru
 
 Files: *
 Copyright: 2024 Andreyanov Nikita <andreanov.nickita@yandex.ru>

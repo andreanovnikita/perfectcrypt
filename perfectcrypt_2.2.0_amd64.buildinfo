@@ -1,20 +1,17 @@
 Format: 1.0
 Source: perfectcrypt
 Binary: perfectcrypt
-Architecture: amd64 source
-Version: 2.1.0
+Architecture: amd64
+Version: 2.2.0
 Checksums-Md5:
- 4a683bdcaa0b8718aecddca0fb9384e5 648 perfectcrypt_2.1.0.dsc
- fb297b0a3bad814c819696b490260bdb 3272 perfectcrypt_2.1.0_amd64.deb
+ e67620146684cedddd8cb1b611f21d04 14576 perfectcrypt_2.2.0_amd64.deb
 Checksums-Sha1:
- 24fe0d1b257d96a53944e2a6edb73666ae86e0de 648 perfectcrypt_2.1.0.dsc
- bb0546c8cc61086653612285f0e1cc1492b07ebe 3272 perfectcrypt_2.1.0_amd64.deb
+ b9930162f737a2c6221fbab835fdfd37ce53d57c 14576 perfectcrypt_2.2.0_amd64.deb
 Checksums-Sha256:
- 62eac5b2519707e2ceb71dac2a2902d9ddb34ba1266ce93793641e6a8102486c 648 perfectcrypt_2.1.0.dsc
- 6c59de8fde245362af3f9500157b3409439333c43b22d3bcc5093cf903081780 3272 perfectcrypt_2.1.0_amd64.deb
+ 6f5e5a8a3c03346feb8641c119d043b15b2b168ae47b9e9da2964bce45fad980 14576 perfectcrypt_2.2.0_amd64.deb
 Build-Origin: Debian
 Build-Architecture: amd64
-Build-Date: Fri, 16 Jan 2026 14:50:27 +0700
+Build-Date: Fri, 16 Jan 2026 15:31:29 +0700
 Build-Tainted-By:
  usr-local-has-libraries
 Installed-Build-Depends:

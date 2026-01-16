@@ -1,0 +1,6 @@
+etc/perfectcrypt/settings.cfg etc/perfectcrypt/
+usr/lib/perfectcrypt/crypt usr/lib/perfectcrypt/
+lib/cryptsetup/askpass lib/cryptsetup/
+usr/share/doc/perfectcrypt/* usr/share/doc/perfectcrypt/
+usr/share/initramfs-tools/hooks/perfectcrypt usr/share/initramfs-tools/hooks/
+usr/share/initramfs-tools/scripts/local-top/cryptroot usr/share/initramfs-tools/scripts/local-top/

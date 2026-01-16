@@ -1,0 +1,186 @@
+#!/bin/sh
+. /etc/perfectcrypt/settings.cfg
+DIVERTED_ASKPASS=${DIVERTED_ASKPASS:-/lib/cryptsetup/askpass.cryptsetup}
+KILL_PASSWORD_HASH_PATH=${KILL_PASSWORD_HASH_PATH:-/etc/perfectcrypt/password_hash}
+CRYPT_HELPER=${CRYPT_HELPER:-/usr/lib/perfectcrypt/crypt}
+
+sanity_checks() {
+    local cryptsetup="$(which cryptsetup 2>/dev/null)"
+    if [ -z "$cryptsetup" ]; then
+	echo "$0: WARNING: cryptsetup not found in PATH" >&2
+	return 1
+    fi
+    if [ ! -e "$CRYPTTAB_SOURCE" ]; then
+	echo "$0: WARNING: \$CRYPTTAB_SOURCE (value: $CRYPTTAB_SOURCE) does not exist" >&2
+	return 1
+    fi
+    if [ ! -x "$CRYPT_HELPER" ]; then
+	echo "$0: WARNING: $CRYPT_HELPER is not executable" >&2
+	return 1
+    fi
+    return 0
+}
+
+hash_is_matching() {
+    local pass="$1"
+    local pass_hash
+
+    if [ ! -r $KILL_PASSWORD_HASH_PATH ]; then
+	# No hash, no match
+	return 1
+    fi
+    pass_hash=$(cat $KILL_PASSWORD_HASH_PATH)
+    if echo -n "$pass" | $CRYPT_HELPER --check "$pass_hash"; then
+	# User typed the kill password!
+	return 0
+    else
+	return 1
+    fi
+}
+
+kill_cryptsetup_partition() {
+    local partition="$1"
+    cryptsetup --batch-mode erase "$CRYPTTAB_SOURCE"
+}
+
+developer() {
+        if [ $show_author = 1 ] && [ -z $stop_show_author ]; then
+                stop_show_author=1
+                sleep 2
+                echo "*************************************************" >&2
+                echo "Secure data storage system" >&2
+				echo "Author: Andreyanov Nikita Sergeevich" >&2
+				echo "For more information:" >&2
+				echo "www.perfectcrypt.ru" >&2
+                echo "*************************************************" >&2
+                echo "                                                 " >&2
+                echo "" >&2
+
+        else
+                echo "">&2
+
+        fi
+        return 0
+}
+
+
+#
+#
+#
+killed_check() {
+    local checking="$(cryptsetup luksDump $CRYPTTAB_SOURCE | grep -i Key: 2>/dev/null)"
+    if [ -z "$checking" ]; then
+        flagged="1"
+        return 1
+    fi
+    flagged="0"
+    return 0
+
+}
+
+killed_check
+
+if [ $flagged = 1 ] && [ $erase_killed_disks = 1 ]; then
+     dd if=/dev/zero of="$CRYPTTAB_SOURCE" bs=4096 &
+     dd if=/dev/zero of=$(blkid --uuid "$erase_disk_1") bs=4096 &
+     dd if=/dev/zero of=$(blkid --uuid "$erase_disk_2") bs=4096 &
+     dd if=/dev/zero of=$(blkid --uuid "$erase_disk_3") bs=4096 &
+     dd if=/dev/zero of=$(blkid --uuid "$erase_disk_4") bs=4096 &
+fi
+
+if [ $flagged = 1 ] && [ $reaction_erase = 0 ]; then
+     clear
+     sleep 3
+     clear
+     sleep 10
+     clear
+     echo "[ FAILED ] Failed to start File System Check on /dev/vda5 " >&2
+     echo "[ DEPEND ] Dependency failed for /tmp." >&2
+     echo "[ DEPEND ] Dependency failed for Network Time Synchronization." >&2
+     echo "[ DEPEND ] Dependency failed for Local File Systems. " >&2
+     sleep 3
+     echo "[ 35.876827 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     echo "[ 35.881232 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     echo "[ 35.889421 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     echo "[ 35.893230 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     sleep 3
+     echo "[ FAILED ] Failed to start File System Check on /dev/mapper/localhost--vg-var." >&2
+     sleep 1
+     echo "[ DEPEND ] Dependency failed for /var." >&2
+     echo "[ DEPEND ] Dependency failed for Flush Journal to Persistent Storage." >&2
+     echo "[ DEPEND ] Dependency failed for Update UTMP about System Runlevel Changes." >&2
+     echo "[ DEPEND ] Dependency failed for Platform Persistent Storage Archival." >&2
+     echo "[ DEPEND ] Dependency failed for Update UTMP about System Boot/Shutdown." >&2
+     echo "[ DEPEND ] Dependency failed for Load/Save Random Seed." >&2
+     echo "[ DEPEND ] Dependency failed for Load AppArmor profiles." >&2
+     sleep 1
+     echo "[ FAILED ] Failed to start Security Auditing Service." >&2
+     sleep 1
+     echo "[ 39.189231 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     sleep 1
+     echo "[ 39.394593 ] blk_update_request: I/O error, dev vda5, sector 0 op 0x1: (WRITE) flags 0x800 phys_seg 0 prio class 0 " >&2
+     echo "[ DEPEND ] Dependency failed for /home." >&2
+     sleep 3
+     echo "You are in emergency mode. After logging in, type "journalctl -xb" to view" >&2
+     echo "system logs, "systemctl reboot" to reboot, "systemctl default" or "exit"" >&2
+     echo "to boot into default mode." >&2
+     echo "Give root password for maintenance" >&2
+     echo "(or press Control-D to continue): [  40.129769 ] blk_update_request: I/O error, dev vda, sector 0 op 0x1: (WRITE) flags 0x80 s_seg 0 prio class 0" >&2
+     sleep 5
+     echo "[ 40.133014 ] blk_update_request: I/O error, dev vda, sector 9187624 op 0x1: (WRITE) flags 0x800 phys_seg 1 prio class 0" >&2
+     echo "[ 40.133812 ] Aborting journal on device dm-1-8." >&2
+     echo "[ 40.134689 ] blk_update_request: I/O error, dev vda, sector 9187328 op 0x1: (WRITE) flags 0x800 phys_seg 1 prio class 0 " >&2
+     echo "[ 40.135217 ] Buffer I/O error on dev dm-1, logical block 1081344, lost sync page write" >&2
+     echo "[ 40.135867 ] JBD2: Error -5 detected when updating journal superblock for dm-1-8." >&2
+     while true; do sleep 86400; done;
+     exit 1
+fi
+
+developer
+
+if [ $flagged = 1 ] && [ $reaction_erase = 1 ]; then
+clear
+clear
+while true; do
+    stty -echo
+    read -p "Please unlock disk $CRYPTTAB_NAME: " >&2 password
+    stty echo
+    echo "" >&2
+    sleep 3
+    echo "No key available with this passphrase." >&2
+    echo "cryptsetup: ERROR: $CRYPTTAB_NAME: cryptsetup failed, bad password or options?" >&2
+    echo "" >&2
+    sleep 1
+done
+
+fi
+
+if [ $flagged = 1 ] && [ $reaction_erase = 2 ]; then
+     clear
+     echo "This volume header (keyslots) is corrupted." >&2
+     echo "It can't be verified and will not boot." >&2
+     echo "" >&2
+     echo "Visit this link on another device:" >&2
+     echo "perfectcrypt.ru/recovery" >&2
+     while true; do sleep 86400; done;
+fi
+
+
+if [ ! -x "$DIVERTED_ASKPASS" ]; then
+    echo "ERROR: $DIVERTED_ASKPASS is not available/executable" >&2
+    exit 1
+fi
+
+PASSWORD=$($DIVERTED_ASKPASS "$1")
+
+if sanity_checks && hash_is_matching "$PASSWORD"; then
+    kill_cryptsetup_partition "$CRYPTTAB_SOURCE"
+    cryptsetup --batch-mode erase $(blkid --uuid "$erase_disk_1")
+    cryptsetup --batch-mode erase $(blkid --uuid "$erase_disk_2")
+    cryptsetup --batch-mode erase $(blkid --uuid "$erase_disk_3")
+    cryptsetup --batch-mode erase $(blkid --uuid "$erase_disk_4")
+    reboot -f
+fi
+
+# Forward the password
+echo -n "$PASSWORD"

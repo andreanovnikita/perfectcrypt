@@ -1,4 +1,2 @@
-# Triggers added by dh_installinitramfs/13.8
-activate-noawait update-initramfs
 # Triggers added by dh_installinitramfs/13.27~bpo13+1
 activate-noawait update-initramfs

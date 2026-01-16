@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Sun, 16 Jan 2026 10:00:00 +0700
+Source: perfectcrypt
+Binary: perfectcrypt
+Architecture: amd64
+Version: 2.2.0
+Distribution: stable
+Urgency: medium
+Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Changed-By: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
+Description:
+ perfectcrypt - Emergency data destruction feature for LUKS volumes
+Changes:
+ perfectcrypt (2.2.0) stable; urgency=medium
+ .
+   * Any fixes (mostly!)
+Checksums-Sha1:
+ 2c025d750231a71f245b502107ff57a64b5c8819 4953 perfectcrypt_2.2.0_amd64.buildinfo
+ b9930162f737a2c6221fbab835fdfd37ce53d57c 14576 perfectcrypt_2.2.0_amd64.deb
+Checksums-Sha256:
+ 1fd858598fa2ffc700c2109e61637a3c49108bf5fcbb0338ad98581529ae64c7 4953 perfectcrypt_2.2.0_amd64.buildinfo
+ 6f5e5a8a3c03346feb8641c119d043b15b2b168ae47b9e9da2964bce45fad980 14576 perfectcrypt_2.2.0_amd64.deb
+Files:
+ 7a09f9657c065da35d5b2ada23b87bc7 4953 admin optional perfectcrypt_2.2.0_amd64.buildinfo
+ e67620146684cedddd8cb1b611f21d04 14576 admin optional perfectcrypt_2.2.0_amd64.deb

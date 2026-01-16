@@ -1,1 +1,8 @@
-20f62ee868e21db8ccad9bcddcd9a7af  usr/share/doc/perfectcrypt/changelog.gz
+c96125dfb88bdabf9c7c17cd135ba92c  lib/cryptsetup/askpass
+5d09709d9c8e44e4dfb8f8535b29b363  usr/lib/perfectcrypt/crypt
+5b7f5c3698e1e435dfe7be22dcc17171  usr/share/doc/perfectcrypt/EMERGENCY.md
+cb9f0bda952f01ac86b03695c8ea0fab  usr/share/doc/perfectcrypt/README.md
+75fad015c25bf215e70e7b7d03a66071  usr/share/doc/perfectcrypt/changelog.gz
+fd00e5302c8f6f46556c6cd0acbf1358  usr/share/doc/perfectcrypt/copyright
+0f07bc397979bb449e399aa55ee51642  usr/share/initramfs-tools/hooks/perfectcrypt
+9c8f1b31390d0fddd9544add482c3433  usr/share/initramfs-tools/scripts/local-top/cryptroot

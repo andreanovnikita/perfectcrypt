@@ -9,7 +9,7 @@ Rules-Requires-Root: no
 
 Package: perfectcrypt
 Architecture: amd64
-Version: 2.1.0
+Version: 2.2.0
 Depends: cryptsetup-bin,
          libc6 (>= 2.25),
          libcrypt1 (>= 1:4.1.0),

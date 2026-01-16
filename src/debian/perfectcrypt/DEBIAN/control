@@ -1,8 +1,8 @@
 Package: perfectcrypt
-Version: 2.1.0
+Version: 2.2.0
 Architecture: amd64
 Maintainer: Andreyanov Nikita Sergeevich <andreanov.nickita@yandex.ru>
-Installed-Size: 16
+Installed-Size: 68
 Depends: cryptsetup-bin, libc6 (>= 2.25), libcrypt1 (>= 1:4.1.0), debconf (>= 0.5) | debconf-2.0
 Enhances: cryptsetup-initramfs
 Conflicts: cryptsetup-nuke-password

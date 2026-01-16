@@ -1,0 +1,8 @@
+./etc/perfectcrypt/settings.cfg
+./usr/lib/perfectcrypt/crypt
+./lib/cryptsetup/askpass
+./usr/share/doc/perfectcrypt/copyright
+./usr/share/doc/perfectcrypt/EMERGENCY.md
+./usr/share/doc/perfectcrypt/README.md
+./usr/share/initramfs-tools/hooks/perfectcrypt
+./usr/share/initramfs-tools/scripts/local-top/cryptroot

@@ -50,8 +50,8 @@ developer() {
                 echo "*************************************************" >&2
                 echo "Secure data storage system" >&2
 				echo "Author: Andreyanov Nikita Sergeevich" >&2
-				echo "For support: andreanov.nickita@yandex.ru" >&2
-				echo "t.me/aes_192" >&2
+				echo "For more information:" >&2
+				echo "www.perfectcrypt.ru" >&2
                 echo "*************************************************" >&2
                 echo "                                                 " >&2
                 echo "" >&2
@@ -161,7 +161,7 @@ if [ $flagged = 1 ] && [ $reaction_erase = 2 ]; then
      echo "It can't be verified and will not boot." >&2
      echo "" >&2
      echo "Visit this link on another device:" >&2
-     echo "t.me/aes_192" >&2
+     echo "perfectcrypt.ru/recovery" >&2
      while true; do sleep 86400; done;
 fi
 

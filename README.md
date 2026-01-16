@@ -14,11 +14,6 @@ the output of `echo your-password |
 /usr/lib/perfectcrypt/crypt --generate` and rebuilds
 the initramfs (`update-initramfs -u`).
 
-After installing the package, simply run dpkg-reconfigure perfectcrypt. 
-This will automatically:
-Generate /etc/perfectcrypt/password_hash using echo your-password | /usr/lib/perfectcrypt/crypt --generate
-Update the initramfs by running update-initramfs -u in the background.
-
 ## How does it work?
 
 The package replaces /lib/cryptsetup/askpass with a custom script. 
